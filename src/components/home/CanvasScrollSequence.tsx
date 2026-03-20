@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, useMotionValueEvent, motion } from "framer-motion";
 
-const FRAME_COUNT = 300;
+const FRAME_COUNT = 150;
 
 export function CanvasScrollSequence({ children }: { children?: React.ReactNode }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -113,12 +113,12 @@ export function CanvasScrollSequence({ children }: { children?: React.ReactNode 
 
         <canvas
           ref={canvasRef}
-          className="w-full h-full object-cover mix-blend-screen opacity-50"
+          className="w-full h-full object-cover mix-blend-screen opacity-90 contrast-125 saturate-150 brightness-110"
         />
         
         {/* Gradients to seamlessly blend frames into black background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background/90 z-10 pointer-events-none opacity-80" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#050505_100%)] z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10 pointer-events-none opacity-60" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#050505_100%)] z-10 pointer-events-none opacity-90" />
         
       </div>
 
