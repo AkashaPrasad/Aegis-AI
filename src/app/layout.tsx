@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Aegis AI Red Team | Automated LLM Safety Testing & Compliance",
-  description: "Secure AI before it speaks. Aegis helps businesses test, audit, and protect AI chatbots from prompt injection, data leakage, and harmful outputs.",
+  title: "Aegis AI | Secure AI Before It Speaks",
+  description: "Automated LLM Safety Testing & Compliance Platform.",
 };
 
 export default function RootLayout({

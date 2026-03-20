@@ -43,9 +43,9 @@ export function Navbar() {
       <div className="container mx-auto px-6 max-w-[1920px] flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <img src="/logo.png" alt="Aegis Logo" className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(255,153,0,0.5)]" />
+          <img src="/logo.png" alt="Aegis AI Logo" className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(255,153,0,0.5)]" />
           <span className="font-semibold text-xl tracking-tight text-white group-hover:text-primary transition-colors">
-            Aegis
+            Aegis AI
           </span>
         </Link>
 

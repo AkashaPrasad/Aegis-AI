@@ -8,9 +8,9 @@ export function Footer() {
           
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-3 group mb-6">
-              <img src="/logo.png" alt="Aegis Logo" className="w-7 h-7 object-contain opacity-90 group-hover:opacity-100 transition-opacity" />
+              <img src="/logo.png" alt="Aegis AI Logo" className="w-7 h-7 object-contain opacity-90 group-hover:opacity-100 transition-opacity" />
               <span className="font-semibold text-xl tracking-tight text-white">
-                Aegis
+                Aegis AI
               </span>
             </Link>
             <p className="text-text-secondary text-sm max-w-xs mb-6 leading-relaxed">

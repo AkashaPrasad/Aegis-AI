@@ -15,7 +15,7 @@ export default function AboutPage() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">And provably safe.</span>
             </h1>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed mb-12">
-              As businesses adopt AI rapidly, safety, reliability, and policy alignment can no longer be optional. Aegis exists to help teams ship useful AI systems without exposing users, data, or trust to preventable failures.
+              As businesses adopt AI rapidly, safety, reliability, and policy alignment can no longer be optional. Aegis AI exists to help teams ship useful AI systems without exposing users, data, or trust to preventable failures.
             </p>
           </AnimatedSection>
         </div>
@@ -51,20 +51,49 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { role: "CEO & Co-Founder", initials: "A" },
-              { role: "CTO & Co-Founder", initials: "B" },
-              { role: "CPO & Co-Founder", initials: "C" },
+              {
+                name: "Ujjwal Kumar Rai",
+                role: "Co-Founder, CTO & Head of Growth & Marketing",
+                initials: "UR",
+                points: [
+                  "Growth-driven operator combining marketing intelligence with product thinking.",
+                  "Specializes in scaling user acquisition, engagement, and brand ecosystems.",
+                  "Executes high-impact strategies across content, growth loops, and MVPs."
+                ]
+              },
+              {
+                name: "Akasha A Prasad",
+                role: "Founder, CEO & CFO",
+                initials: "AP",
+                points: [
+                  "Systems thinker blending cybersecurity, architecture, and product strategy.",
+                  "Builds scalable solutions with strong real-world problem-solving focus.",
+                  "Rapid learner driving execution across tech and business domains."
+                ]
+              },
+              {
+                name: "Ranit Laha",
+                role: "Head of DevOps & Infrastructure",
+                initials: "RL",
+                points: [
+                  "AI systems specialist focused on LLM architecture and scalable deployments.",
+                  "Designs robust pipelines for model evaluation, safety, and optimization.",
+                  "Leads development of AI red-teaming and guardrail validation systems."
+                ]
+              }
             ].map((founder, i) => (
-              <AnimatedSection key={i} delay={i * 0.1} direction="up">
-                <PremiumCard className="text-center pb-12 pt-12">
-                  <div className="w-24 h-24 mx-auto bg-surface-elevated border border-border rounded-full flex items-center justify-center text-3xl font-bold text-text-muted mb-6 shadow-inner">
+              <AnimatedSection key={i} delay={i * 0.1} direction="up" className="flex">
+                <PremiumCard className="pb-12 pt-12 flex-1 flex flex-col items-center">
+                  <div className="w-24 h-24 bg-surface-elevated border border-border rounded-full flex items-center justify-center text-3xl font-bold text-text-muted mb-6 shadow-inner tracking-wider">
                     {founder.initials}
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Founder Name</h3>
-                  <div className="text-primary text-sm font-medium mb-4">{founder.role}</div>
-                  <p className="text-sm text-text-secondary w-4/5 mx-auto">
-                    Former AI Red Team lead at top-tier cyber firm. Expert in adversarial machine learning.
-                  </p>
+                  <h3 className="text-xl font-bold text-white mb-2 text-center">{founder.name}</h3>
+                  <div className="text-primary text-xs font-semibold uppercase tracking-widest mb-6 text-center h-8 px-4 flex items-center justify-center whitespace-normal">{founder.role}</div>
+                  <ul className="text-sm text-text-secondary w-5/6 mx-auto space-y-3 text-left list-disc list-outside pl-4">
+                    {founder.points.map((point, ptIdx) => (
+                      <li key={ptIdx}>{point}</li>
+                    ))}
+                  </ul>
                 </PremiumCard>
               </AnimatedSection>
             ))}
@@ -77,7 +106,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 max-w-3xl text-center">
           <AnimatedSection delay={0.2}>
             <p className="text-lg text-text-secondary leading-relaxed italic border-l-2 border-primary/50 pl-6 text-left">
-              "We built Aegis because we constantly saw engineering teams hesitating to deploy incredibly useful AI models purely out of fear. By providing a quantifiable, auditable safety layer, we aren't slowing down AI adoption—we're allowing enterprises to accelerate it with confidence."
+              "We built Aegis AI because we constantly saw engineering teams hesitating to deploy incredibly useful AI models purely out of fear. By providing a quantifiable, auditable safety layer, we aren't slowing down AI adoption—we're allowing enterprises to accelerate it with confidence."
             </p>
           </AnimatedSection>
         </div>

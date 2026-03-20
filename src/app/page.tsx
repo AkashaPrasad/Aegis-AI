@@ -17,7 +17,7 @@ export default function Home() {
             <div className="max-w-4xl pt-[20vh] pointer-events-auto">
               <AnimatedSection direction="up" delay={0.2}>
                 <div className="inline-block px-3 py-1 mb-6 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase">
-                  Automated LLM Safety Testing & Compliance Platform
+                  Aegis AI Red Team Platform
                 </div>
               </AnimatedSection>
               
@@ -32,7 +32,7 @@ export default function Home() {
 
               <AnimatedSection direction="up" delay={0.6}>
                 <p className="text-lg md:text-xl text-text-secondary max-w-2xl mb-10 leading-relaxed">
-                  Aegis helps businesses test, audit, and protect AI chatbots from prompt injection, jailbreaks, sensitive data leakage, policy failures, and harmful outputs.
+                  Aegis AI helps businesses test, audit, and protect AI chatbots from prompt injection, jailbreaks, sensitive data leakage, policy failures, and harmful outputs.
                 </p>
               </AnimatedSection>
 
@@ -89,22 +89,50 @@ export default function Home() {
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: ShieldAlert, title: "Prompt Injection", desc: "Attackers overriding core instructions." },
-              { icon: Database, title: "Data Leakage", desc: "Exposure of PII or sensitive corporate data." },
-              { icon: Target, title: "Off-Scope Outputs", desc: "Bots behaving unprofessionally or hallucinating." },
-              { icon: Key, title: "Compliance Risk", desc: "Failing to meet OWASP LLM standards." },
-            ].map((item, i) => (
-              <AnimatedSection key={i} delay={i * 0.1}>
-                <PremiumCard glowOnHover={false} className="border-border/30 bg-surface h-full">
-                  <div className="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-border mb-6 text-text-muted">
-                    <item.icon size={20} />
+            <AnimatedSection delay={0 * 0.1}>
+                <PremiumCard className="h-full flex flex-col p-8">
+                  <div className="w-12 h-12 rounded-lg bg-surface flex items-center justify-center mb-6">
+                    <ShieldAlert className="text-primary" size={24} />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-text-secondary">{item.desc}</p>
+                  <h3 className="text-xl font-bold mb-3">Threat Simulation</h3>
+                  <p className="text-text-secondary leading-relaxed">
+                    Aegis AI runs tens of thousands of automated adversarial prompts against your endpoints to discover vulnerabilities before hackers do.
+                  </p>
                 </PremiumCard>
               </AnimatedSection>
-            ))}
+              <AnimatedSection delay={1 * 0.1}>
+                <PremiumCard className="h-full flex flex-col p-8">
+                  <div className="w-12 h-12 rounded-lg bg-surface flex items-center justify-center mb-6">
+                    <Database className="text-primary" size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Data Leakage Prevention</h3>
+                  <p className="text-text-secondary leading-relaxed">
+                    Aegis AI identifies and prevents the exposure of sensitive data, PII, or confidential corporate information.
+                  </p>
+                </PremiumCard>
+              </AnimatedSection>
+              <AnimatedSection delay={2 * 0.1}>
+                <PremiumCard className="h-full flex flex-col p-8">
+                  <div className="w-12 h-12 rounded-lg bg-surface flex items-center justify-center mb-6">
+                    <Target className="text-primary" size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Behavioral QA</h3>
+                  <p className="text-text-secondary leading-relaxed">
+                    Aegis AI ensures your AI behaves as intended, preventing off-topic responses, hallucinations, or unprofessional conduct.
+                  </p>
+                </PremiumCard>
+              </AnimatedSection>
+              <AnimatedSection delay={3 * 0.1}>
+                <PremiumCard className="h-full flex flex-col p-8">
+                  <div className="w-12 h-12 rounded-lg bg-surface flex items-center justify-center mb-6">
+                    <Key className="text-primary" size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Compliance & Auditability</h3>
+                  <p className="text-text-secondary leading-relaxed">
+                    Aegis AI provides comprehensive audit trails and reporting to meet regulatory requirements and internal policies.
+                  </p>
+                </PremiumCard>
+              </AnimatedSection>
           </div>
         </div>
       </section>
@@ -122,7 +150,7 @@ export default function Home() {
               <span className="text-primary border-b border-primary/30 pb-1">and real-time protection.</span>
             </h2>
             <p className="text-lg text-text-secondary max-w-3xl mx-auto mb-16 leading-relaxed">
-              Aegis is an end-to-end AI assurance platform providing automated adversarial testing, behavioural QA, real-time AI firewall protection, and structured risk review—all backed by compliance-oriented audibility.
+              Aegis AI is an end-to-end AI assurance platform providing automated adversarial testing, behavioural QA, real-time AI firewall protection, and structured risk review—all backed by compliance-oriented audibility.
             </p>
           </AnimatedSection>
         </div>
@@ -171,21 +199,54 @@ export default function Home() {
             </AnimatedSection>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { title: "Automated Adversarial Testing", desc: "Contextual prompt generation against the target endpoint." },
-                { title: "Behavioural QA", desc: "Pass/fail/error evaluation of domain-specific constraints." },
-                { title: "Real-Time AI Firewall", desc: "Under-500ms firewall verdicts with flexible allow/warn/block logic." },
-                { title: "OWASP LLM Coverage", desc: "Pre-mapped test suites aligned with OWASP Top 10 for LLMs." },
-                { title: "TPI Scoring & Analytics", desc: "Quantifiable metrics, severity classification, and trend tracking." },
-                { title: "Detailed Failure Logs", desc: "Granular explanations of exactly why a test failed." }
-              ].map((feat, i) => (
-                <AnimatedSection key={i} delay={i * 0.05} direction="up">
-                  <div className="py-6 border-t border-border/50">
-                    <h4 className="text-white font-medium mb-2">{feat.title}</h4>
-                    <p className="text-sm text-text-secondary">{feat.desc}</p>
+              <AnimatedSection delay={0 * 0.05} direction="up">
+                <PremiumCard className="h-full flex flex-col overflow-hidden group">
+                  <div className="h-48 bg-surface-elevated/50 p-6 flex flex-col justify-between border-b border-border">
+                    <div className="text-sm font-medium text-text-muted">Aegis AI Protect</div>
+                    <div className="text-primary font-mono text-xs p-2 bg-background/50 rounded inline-block self-start border border-primary/20">
+                      [BLOCK] Data Leakage Attempt
+                    </div>
                   </div>
-                </AnimatedSection>
-              ))}
+                  <div className="p-6">
+                    <h3 className="font-bold text-xl mb-2">Real-Time AI Firewall</h3>
+                    <p className="text-text-secondary leading-relaxed">
+                      Deploy a real-time AI firewall endpoint between users and the target AI. Under-500ms verdicts with flexible allow/warn/block logic.
+                    </p>
+                  </div>
+                </PremiumCard>
+              </AnimatedSection>
+              <AnimatedSection delay={1 * 0.05} direction="up">
+                <PremiumCard className="h-full flex flex-col overflow-hidden group">
+                  <div className="h-48 bg-surface-elevated/50 p-6 flex flex-col justify-between border-b border-border">
+                    <div className="text-sm font-medium text-text-muted">Aegis AI Test</div>
+                    <div className="text-primary font-mono text-xs p-2 bg-background/50 rounded inline-block self-start border border-primary/20">
+                      [FAIL] Prompt Injection
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-bold text-xl mb-2">Automated Adversarial Testing</h3>
+                    <p className="text-text-secondary leading-relaxed">
+                      Contextual prompt generation against the target endpoint. Pre-mapped test suites aligned with OWASP Top 10 for LLMs.
+                    </p>
+                  </div>
+                </PremiumCard>
+              </AnimatedSection>
+              <AnimatedSection delay={2 * 0.05} direction="up">
+                <PremiumCard className="h-full flex flex-col overflow-hidden group">
+                  <div className="h-48 bg-surface-elevated/50 p-6 flex flex-col justify-between border-b border-border">
+                    <div className="text-sm font-medium text-text-muted">Aegis AI Audit</div>
+                    <div className="text-primary font-mono text-xs p-2 bg-background/50 rounded inline-block self-start border border-primary/20">
+                      [PASS] Allowed Intent
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-bold text-xl mb-2">TPI Scoring & Analytics</h3>
+                    <p className="text-text-secondary leading-relaxed">
+                      Quantifiable metrics, severity classification, and trend tracking. Granular explanations of exactly why a test failed.
+                    </p>
+                  </div>
+                </PremiumCard>
+              </AnimatedSection>
             </div>
           </div>
 
