@@ -76,7 +76,7 @@ export default function Home() {
       </section>
 
       {/* 2. Problem Section */}
-      <section className="py-32 bg-transparent relative z-20 mt-[50vh]">
+      <section className="py-32 bg-transparent relative z-20">
         <div className="container mx-auto px-6 md:px-12 max-w-[1920px]">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">

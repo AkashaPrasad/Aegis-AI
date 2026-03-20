@@ -7,11 +7,15 @@ const FRAME_COUNT = 150;
 
 export function CanvasScrollSequence({ children }: { children?: React.ReactNode }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // By omitting 'target', useScroll will track the global window scroll from top to bottom
-  const { scrollYProgress } = useScroll();
+  // Bind the scroll progress STRICTLY to this container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
   // Preload images
   useEffect(() => {
@@ -24,7 +28,8 @@ export function CanvasScrollSequence({ children }: { children?: React.ReactNode 
       img.src = `/frames/ezgif-frame-${frameNumber}.jpg`;
       img.onload = () => {
         loadedCount++;
-        if (loadedCount === FRAME_COUNT) {
+        // Remove loading screen immediately after the first 5 frames are loaded
+        if (loadedCount === 5) {
           setIsLoaded(true);
         }
       };
@@ -91,41 +96,49 @@ export function CanvasScrollSequence({ children }: { children?: React.ReactNode 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (!isLoaded) return;
     
-    // Map progress 0-1 to frame 0-299
+    // Map progress 0-1 to frame 0-149
     const frameIndex = Math.min(
       FRAME_COUNT - 1,
       Math.max(0, Math.floor(latest * FRAME_COUNT))
     );
     
+    // Fallback: If hitting a frame that hasn't loaded yet, it just skips drawing
+    // until it is loaded, ensuring smooth failure without breaking the loop
     requestAnimationFrame(() => renderFrame(frameIndex));
   });
 
   return (
-    <>
-      <div className="fixed inset-0 w-full h-full pointer-events-none z-[0]">
+    <div ref={containerRef} className="relative w-full h-[400vh] bg-background">
+      
+      {/* Sticky wrapper pinning the canvas and text for the entire 400vh scroll */}
+      <div className="sticky top-0 w-full h-screen overflow-hidden">
         
-        {/* Loading overlay */}
+        {/* Loading overlay - only lasts for 5 frames now */}
         {!isLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-background z-20">
             <div className="w-8 h-8 rounded-full border-2 border-primary/20 border-t-primary animate-spin" />
           </div>
         )}
 
+        {/* 4K Canvas */}
         <canvas
           ref={canvasRef}
-          className="w-full h-full object-cover mix-blend-screen opacity-90 contrast-125 saturate-150 brightness-110"
+          className="w-full h-full object-cover mix-blend-screen opacity-90 contrast-125 saturate-150 brightness-110 absolute inset-0 z-0"
         />
         
         {/* Gradients to seamlessly blend frames into black background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10 pointer-events-none opacity-60" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#050505_100%)] z-10 pointer-events-none opacity-90" />
+        <div className="absolute inset-x-0 bottom-0 h-[40vh] bg-gradient-to-t from-background via-background/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-[20vh] bg-gradient-to-b from-background via-background/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#050505_100%)] z-10 pointer-events-none opacity-80" />
         
+        {/* Child content (Hero text) overlay */}
+        <div className="absolute inset-0 z-20 w-full h-full flex flex-col justify-center pointer-events-none">
+          <div className="pointer-events-auto w-full">
+            {children}
+          </div>
+        </div>
       </div>
 
-      {/* Child content (Hero text) overlay */}
-      <div className="relative z-10 w-full flex flex-col justify-center min-h-[90vh]">
-        {children}
-      </div>
-    </>
+    </div>
   );
 }
