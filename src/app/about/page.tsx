@@ -63,7 +63,7 @@ export default function AboutPage() {
               },
               {
                 name: "Akasha A Prasad",
-                role: "Founder, CEO & CFO",
+                role: "Co-Founder, CEO & CFO",
                 initials: "AP",
                 points: [
                   "Systems thinker blending cybersecurity, architecture, and product strategy.",
@@ -73,7 +73,7 @@ export default function AboutPage() {
               },
               {
                 name: "Ranit Laha",
-                role: "Head of DevOps & Infrastructure",
+                role: "Co-Founder & Head of DevOps & Infrastructure",
                 initials: "RL",
                 points: [
                   "AI systems specialist focused on LLM architecture and scalable deployments.",
