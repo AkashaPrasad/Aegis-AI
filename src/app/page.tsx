@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { CanvasScrollSequence } from "@/components/home/CanvasScrollSequence";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 import { PremiumCard } from "@/components/global/PremiumCard";
+import { IntroVideo } from "@/components/home/IntroVideo";
 
 export default function Home() {
   return (
@@ -78,15 +79,21 @@ export default function Home() {
       {/* 2. Problem Section */}
       <section className="py-32 bg-transparent relative z-20">
         <div className="container mx-auto px-6 md:px-12 max-w-[1920px]">
-          <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              The risk is already in production.
-            </h2>
-            <p className="text-lg text-text-secondary max-w-3xl mb-16 leading-relaxed">
-              Businesses are deploying LLM-powered assistants without systematic safety validation. 
-              This leads to unquantified risks that damage trust and draw regulatory scrutiny.
-            </p>
-          </AnimatedSection>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16">
+            <AnimatedSection>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+                The risk is already in production.
+              </h2>
+              <p className="text-lg text-text-secondary leading-relaxed">
+                Businesses are deploying LLM-powered assistants without systematic safety validation. 
+                This leads to unquantified risks that damage trust and draw regulatory scrutiny.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.2} direction="left">
+              <IntroVideo />
+            </AnimatedSection>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <AnimatedSection delay={0 * 0.1}>
