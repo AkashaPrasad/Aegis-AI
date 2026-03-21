@@ -3,7 +3,6 @@
 import { useRef, useState } from "react";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 import { PremiumCard } from "@/components/global/PremiumCard";
-import { submitEnquiry, submitFeedback } from "./actions";
 
 export default function ContactPage() {
   const [enquiryStatus, setEnquiryStatus] = useState<"idle" | "loading" | "success">("idle");
@@ -14,18 +13,44 @@ export default function ContactPage() {
 
   async function handleEnquiry(formData: FormData) {
     setEnquiryStatus("loading");
-    await submitEnquiry(formData);
-    setEnquiryStatus("success");
-    enquiryFormRef.current?.reset();
-    setTimeout(() => setEnquiryStatus("idle"), 5000);
+    formData.append("_subject", "New Aegis Website Submission (Enquiry)");
+
+    try {
+      const res = await fetch("https://formspree.io/f/xwvrzdak", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      });
+      if (res.ok) {
+        setEnquiryStatus("success");
+        enquiryFormRef.current?.reset();
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setTimeout(() => setEnquiryStatus("idle"), 5000);
+    }
   }
 
   async function handleFeedback(formData: FormData) {
     setFeedbackStatus("loading");
-    await submitFeedback(formData);
-    setFeedbackStatus("success");
-    feedbackFormRef.current?.reset();
-    setTimeout(() => setFeedbackStatus("idle"), 5000);
+    formData.append("_subject", "New Aegis Website Submission (Feedback)");
+
+    try {
+      const res = await fetch("https://formspree.io/f/xwvrzdak", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      });
+      if (res.ok) {
+        setFeedbackStatus("success");
+        feedbackFormRef.current?.reset();
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setTimeout(() => setFeedbackStatus("idle"), 5000);
+    }
   }
 
   return (

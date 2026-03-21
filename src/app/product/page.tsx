@@ -1,6 +1,9 @@
+"use client";
+
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 import { PremiumCard } from "@/components/global/PremiumCard";
 import { CheckCircle, Zap, Shield, FileSearch, Scale, BarChart3, Database } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ProductPage() {
   return (
@@ -28,7 +31,7 @@ export default function ProductPage() {
             <h2 className="text-3xl font-bold mb-16">The Testing & Protection Lifecycle</h2>
           </AnimatedSection>
 
-          <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
+          <div className="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-transparent before:via-white/50 before:to-transparent">
             {[
               { title: "Define Scope", desc: "Business provides model provider details and target endpoint, then defines allowed and restricted intents." },
               { title: "Experiment Selection", desc: "The platform selects from adversarial, behavioural QA, and OWASP LLM category attack libraries." },
@@ -38,9 +41,15 @@ export default function ProductPage() {
               { title: "Deploy Firewall", desc: "Enable the real-time firewall in production using the same calibrated policies." }
             ].map((step, idx) => (
               <AnimatedSection key={idx} direction={idx % 2 === 0 ? "left" : "right"} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-primary/50 bg-surface-elevated text-primary font-bold shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 z-10 group-hover:bg-primary group-hover:text-background transition-colors duration-300">
+                <motion.div 
+                  initial={{ boxShadow: "0px 0px 0px rgba(124, 255, 79, 0)", backgroundColor: "transparent", color: "#7CFF4F", borderColor: "rgba(124, 255, 79, 0.4)" }}
+                  whileInView={{ boxShadow: "0px 0px 30px rgba(124, 255, 79, 0.9)", backgroundColor: "#7CFF4F", color: "#000", borderColor: "#7CFF4F" }}
+                  viewport={{ margin: "-20% 0px -20% 0px", once: false }}
+                  transition={{ duration: 0.6 }}
+                  className="flex items-center justify-center w-10 h-10 rounded-full border-2 shrink-0 md:absolute md:left-1/2 md:-translate-x-1/2 z-10 font-bold"
+                >
                   {idx + 1}
-                </div>
+                </motion.div>
                 <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-6 rounded-xl border border-border bg-background hover:border-primary/30 transition-colors">
                   <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
                   <p className="text-sm text-text-secondary">{step.desc}</p>
