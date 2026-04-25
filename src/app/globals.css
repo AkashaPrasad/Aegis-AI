@@ -56,6 +56,40 @@ body {
   background: rgba(255, 255, 255, 0.3); 
 }
 
+/* Aceternity UI: BackgroundRippleEffect animation */
+@keyframes cell-ripple {
+  0% {
+    opacity: 0.4;
+  }
+  40% {
+    opacity: 0.9;
+    background-color: rgba(103, 240, 61, 0.12);
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.animate-cell-ripple {
+  animation: cell-ripple var(--duration, 400ms) var(--delay, 0ms) ease-out;
+}
+
+/* Aceternity UI: Spotlight animation */
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 forwards;
+}
+
 /* Utility to hide scrollbar for horizontal lists */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

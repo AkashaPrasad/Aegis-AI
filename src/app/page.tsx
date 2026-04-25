@@ -3,37 +3,53 @@
 import Link from "next/link";
 import { ArrowRight, Shield, Activity, ShieldAlert, Target, Database, Key } from "lucide-react";
 import { motion } from "framer-motion";
-import { CanvasScrollSequence } from "@/components/home/CanvasScrollSequence";
 import { AnimatedSection } from "@/components/global/AnimatedSection";
 import { PremiumCard } from "@/components/global/PremiumCard";
 import { IntroVideo } from "@/components/home/IntroVideo";
+import { Spotlight } from "@/components/ui/spotlight";
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 
 export default function Home() {
   return (
     <>
-      {/* 1. Hero Section (with Canvas Animation) */}
-      <section className="relative w-full">
-        <CanvasScrollSequence>
-          <div className="container mx-auto px-6 md:px-12 max-w-[1920px] pt-32">
-            <div className="max-w-4xl pt-[20vh] pointer-events-auto">
+      {/* 1. Hero Section — BackgroundRippleEffectDemo pattern */}
+      <section className="relative flex min-h-screen w-full flex-col items-start justify-start overflow-hidden bg-background">
+        {/* Aceternity UI: interactive ripple grid (background) */}
+        <BackgroundRippleEffect rows={8} cols={27} cellSize={56} />
+
+        {/* Aceternity UI: Spotlight — ambient green wash over the grid */}
+        <Spotlight
+          className="-top-40 -left-10 md:left-32 md:-top-20"
+          fill="rgba(103, 240, 61, 0.18)"
+        />
+
+        {/* Bottom fade — blends into the section below */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[4] h-48 bg-gradient-to-t from-background to-transparent" />
+
+        {/* Hero content — mt-60 mirrors the demo's layout offset */}
+        <div className="relative z-10 mt-60 w-full pb-32">
+          <div className="container mx-auto max-w-[1920px] px-6 md:px-12">
+            <div className="max-w-4xl">
               <AnimatedSection direction="up" delay={0.2}>
-                <div className="inline-block px-3 py-1 mb-6 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase">
+                <div className="mb-6 inline-block rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
                   Aegis AI Red Team Platform
                 </div>
               </AnimatedSection>
-              
+
               <AnimatedSection direction="up" delay={0.4}>
-                <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+                <h1 className="mb-6 text-6xl font-bold leading-[1.1] tracking-tight text-white md:text-7xl">
                   Secure AI <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">
+                  <span className="bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent">
                     before it speaks.
                   </span>
                 </h1>
               </AnimatedSection>
 
               <AnimatedSection direction="up" delay={0.6}>
-                <p className="text-lg md:text-xl text-text-secondary max-w-2xl mb-10 leading-relaxed">
-                  Aegis AI helps businesses test, audit, and protect AI chatbots from prompt injection, jailbreaks, sensitive data leakage, policy failures, and harmful outputs.
+                <p className="mb-10 max-w-2xl text-lg leading-relaxed text-text-secondary md:text-xl">
+                  Aegis AI helps businesses test, audit, and protect AI chatbots
+                  from prompt injection, jailbreaks, sensitive data leakage,
+                  policy failures, and harmful outputs.
                 </p>
               </AnimatedSection>
 
@@ -42,7 +58,7 @@ export default function Home() {
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Link
                       href="/contact#enquiry"
-                      className="relative px-10 py-4 rounded-full font-medium text-background bg-primary overflow-hidden group hover:bg-primary-hover transition-all duration-300 flex"
+                      className="group relative flex overflow-hidden rounded-full bg-primary px-10 py-4 font-medium text-background transition-all duration-300 hover:bg-primary-hover"
                     >
                       <span className="relative z-10 flex items-center gap-2">
                         Enquire Us <ArrowRight size={16} />
@@ -52,7 +68,7 @@ export default function Home() {
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Link
                       href="/contact#feedback"
-                      className="px-10 py-4 rounded-full font-medium text-white border border-border/50 bg-surface/50 hover:bg-surface-elevated hover:border-border transition-all duration-300 flex"
+                      className="flex rounded-full border border-border/50 bg-surface/50 px-10 py-4 font-medium text-white transition-all duration-300 hover:border-border hover:bg-surface-elevated"
                     >
                       Feedback
                     </Link>
@@ -60,20 +76,19 @@ export default function Home() {
                 </div>
               </AnimatedSection>
 
-              {/* Little trust indicators below buttons */}
               <AnimatedSection direction="up" delay={1.0}>
                 <div className="mt-12 flex items-center gap-6 opacity-60">
-                  <div className="flex items-center gap-2 text-xs text-text-muted font-medium uppercase tracking-widest">
+                  <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-text-muted">
                     <Shield size={14} /> Enterprise-Grade
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-text-muted font-medium uppercase tracking-widest">
+                  <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-text-muted">
                     <Activity size={14} /> &lt;50ms Firewall
                   </div>
                 </div>
               </AnimatedSection>
             </div>
           </div>
-        </CanvasScrollSequence>
+        </div>
       </section>
 
       {/* 2. Problem Section */}
